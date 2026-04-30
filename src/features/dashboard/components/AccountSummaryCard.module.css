@@ -1,0 +1,42 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accountName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.accountType {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background-color: #e5edff;
+  color: var(--color-primary);
+}
+
+.iban {
+  font-size: 0.85rem;
+  color: #6b7280;
+  letter-spacing: 0.05em;
+}
+
+.balance {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
