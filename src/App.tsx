@@ -1,11 +1,11 @@
 import './App.css'
 import AppShell from './core/layout/AppShell/AppShell'
+import Dashboard from './core/pages/DashboardPage/Dashboard'
 
 function App() {
   return (
     <AppShell>
-      <h1>LipariBank Dashboard</h1>
-      <p>Bootcamp React — Extreme Learning by Doing</p>
+      <Dashboard/>
     </AppShell>
   )
 }
