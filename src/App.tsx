@@ -1,11 +1,12 @@
 import './App.css'
+import AppShell from './core/layout/AppShell/AppShell'
 
 function App() {
   return (
-    <div>
+    <AppShell>
       <h1>LipariBank Dashboard</h1>
       <p>Bootcamp React — Extreme Learning by Doing</p>
-    </div>
+    </AppShell>
   )
 }
 
