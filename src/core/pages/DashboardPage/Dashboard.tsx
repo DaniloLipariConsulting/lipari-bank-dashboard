@@ -1,7 +1,7 @@
-import MovementRow from "../../../features/dashboard/components/MovementRow";
 import AccountBalanceCard from "../../../features/dashboard/components/AccountBalanceCard";
 import { accounts, movements } from "../../data";
 import styles from "./Dashboard.module.css";
+import TransactionList from "../../../features/dashboard/components/TransactionList/TransactionList";
 
 export default function Dashboard() {
 
@@ -14,15 +14,12 @@ export default function Dashboard() {
         })}
       </div>
 
-      {/* MOVIMENTI */}
-      <div className={styles.movementsSection}>
-        <div className={styles.sectionHeader}>Movimenti recenti</div>
+     
 
-        <div className={styles.movementsList}>
-          {movements.map((movement) => (
-            <MovementRow key={movement.id} movement={movement} />
-          ))}
-        </div>
+      <div>
+        <TransactionList
+          movements={movements}
+        />
       </div>
     </div>
   );

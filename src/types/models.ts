@@ -43,3 +43,24 @@ export interface User {
   lastName: string;
   role: 'CUSTOMER' | 'ADMIN';
 }
+
+export interface FiltersState {
+  searchText: string;
+  type: 'all' | 'credit' | 'debit' | 'pending';
+  minAmount: number | null;
+  maxAmount: number | null;
+  sortBy: 'date' | 'amount';
+  sortOrder: 'asc' | 'desc';
+}
+
+export type FiltersAction =
+  | { type: 'SET_SEARCH'; payload: string }
+  | { type: 'SET_TYPE'; payload: FiltersState['type'] }
+  | { type: 'SET_AMOUNT_RANGE'; payload: { min: number | null; max: number | null } }
+  | {
+      type: 'SET_SORT';
+      payload: { sortBy: FiltersState['sortBy']; sortOrder: FiltersState['sortOrder'] };
+    }
+  | { type: 'RESET_FILTERS' };
+
+  

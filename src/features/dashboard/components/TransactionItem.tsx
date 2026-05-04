@@ -1,12 +1,14 @@
 import { useCallback } from 'react';
 import type { Movement } from '../../../types/models';
-import styles from './MovementRow.module.css';
+import styles from './TransactionItem.module.css';
+import { memo } from "react";
+
 
 type Props = {
   movement: Movement;
 };
 
-export default function MovementRow({ movement }: Props) {
+export default memo(function TransactionItem({ movement }: Props) {
   const formattedDate = new Intl.DateTimeFormat('it-IT').format(new Date(movement.date));
 
   const formattedAmount = new Intl.NumberFormat('it-IT', {
@@ -36,3 +38,4 @@ export default function MovementRow({ movement }: Props) {
     </div>
   );
 }
+)
