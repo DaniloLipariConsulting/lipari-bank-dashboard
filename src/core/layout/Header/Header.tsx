@@ -1,4 +1,5 @@
 import styles from "./Header.module.css";
+import NotificationBell from "../NotificationBell";
 
 export default function Header() {
   return (
@@ -12,8 +13,9 @@ export default function Header() {
       <div className={styles.actions}>
         
         <button className={styles.bellButton}>
-          <span className={styles.bellIcon}>🔔</span>
-          <span className={styles.badge}>3</span>
+          <NotificationBell
+            userId={"1"}
+          />
         </button>
 
         <div className={styles.userInfo}>

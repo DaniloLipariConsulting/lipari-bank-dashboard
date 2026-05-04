@@ -1,0 +1,93 @@
+.bellButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.bellIcon {
+  font-size: 1.25rem;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #f05252;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 2.2rem;
+  right: 0;
+  background: #ffffff;
+  color: #1f2937;
+  border-radius: 0.75rem;
+  width: 260px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: fadeIn 0.15s ease;
+}
+
+.notificationItem {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+.notificationItem:hover {
+  background-color: #f9fafb;
+}
+
+.unread {
+  font-weight: 600;
+  background-color: #f3f6ff;
+  border-left: 3px solid #3b82f6;
+}
+
+.unread:hover {
+  background-color: #eaf0ff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
