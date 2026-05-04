@@ -91,6 +91,7 @@ export default function TransactionList({ movements }: Props) {
   }, []);
 
    return (
+    
     <div className={styles.container}>
       
       {/* 🔹 FILTRI */}
