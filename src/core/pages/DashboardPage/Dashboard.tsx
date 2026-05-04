@@ -1,5 +1,5 @@
 import MovementRow from "../../../features/dashboard/components/MovementRow";
-import AccountSummaryCard from "../../../features/dashboard/components/AccountSummaryCard";
+import AccountSummaryCard from "../../../features/dashboard/components/AccountBalanceCard";
 import { accounts, movements } from "../../data";
 import styles from "./Dashboard.module.css";
 
@@ -8,9 +8,8 @@ export default function Dashboard() {
     <div className={styles.container}>
       {/* CONTI */}
       <div className={styles.accountsSection}>
-        {accounts.map((account) => (
-          <AccountSummaryCard key={account.id} account={account} />
-        ))}
+        
+          <AccountSummaryCard key={accounts[0].id} account={accounts[0]} />
       </div>
 
       {/* MOVIMENTI */}
