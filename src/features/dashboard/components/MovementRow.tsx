@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import type { Movement } from '../../../types/models';
 import styles from './MovementRow.module.css';
 
@@ -15,8 +16,12 @@ export default function MovementRow({ movement }: Props) {
 
   const isPositive = movement.amount > 0;
 
+  const handleRowClick = useCallback((id: string) => {
+  console.log(`Movimento selezionato: ${id}`);
+}, []);
+
   return (
-    <div className={styles.row}>
+    <div onClick={() => handleRowClick(movement.id)} className={styles.row}>
       <div className={styles.left}>
         <span className={styles.description}>{movement.description}</span>
         <span className={styles.category}>{movement.category}</span>

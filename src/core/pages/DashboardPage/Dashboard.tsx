@@ -1,15 +1,17 @@
 import MovementRow from "../../../features/dashboard/components/MovementRow";
-import AccountSummaryCard from "../../../features/dashboard/components/AccountBalanceCard";
+import AccountBalanceCard from "../../../features/dashboard/components/AccountBalanceCard";
 import { accounts, movements } from "../../data";
 import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
+
   return (
     <div className={styles.container}>
       {/* CONTI */}
       <div className={styles.accountsSection}>
-        
-          <AccountSummaryCard key={accounts[0].id} account={accounts[0]} />
+        {accounts.map((a) => {
+          return <AccountBalanceCard key={a.id} account={a} />;
+        })}
       </div>
 
       {/* MOVIMENTI */}

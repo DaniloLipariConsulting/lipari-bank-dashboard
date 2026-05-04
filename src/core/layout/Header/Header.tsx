@@ -12,11 +12,11 @@ export default function Header() {
 
       <div className={styles.actions}>
         
-        <button className={styles.bellButton}>
+        <div className={styles.bellButton}>
           <NotificationBell
             userId={"1"}
           />
-        </button>
+        </div>
 
         <div className={styles.userInfo}>
           <span className={styles.greeting}>Ciao,</span>
