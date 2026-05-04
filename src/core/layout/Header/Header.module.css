@@ -80,3 +80,44 @@
 .userName {
   font-weight: 600;
 }
+
+.themeSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* icona */
+.themeLabel {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* bottone stile header */
+.themeButton {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.themeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* active */
+.themeButton:active {
+  transform: scale(0.95);
+}
+
+/* DARK MODE (mantiene coerenza) */
+body.theme-dark .themeButton {
+  border-color: rgba(255, 255, 255, 0.3);
+}

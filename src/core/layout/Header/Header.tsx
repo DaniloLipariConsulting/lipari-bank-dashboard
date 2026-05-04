@@ -3,19 +3,18 @@ import NotificationBell from "../NotificationBell";
 import { useTheme } from "../../../store/auth/theme/ThemeContext";
 import { useAuth } from "../../../store/auth/AuthContext";
 
-
 export default function Header() {
   const { theme, toggleTheme, isDark } = useTheme();
   const { user, isAuthenticated, logout } = useAuth();
 
   return (
     <header className={styles.header}>
-      
       {/* 🔹 THEME */}
-      <div>
-        <p>Theme attuale: {theme}</p>
-        <button onClick={toggleTheme}>
-          Switch to {isDark ? "light" : "dark"}
+      <div className={styles.themeSwitcher}>
+        <span className={styles.themeLabel}>{isDark ? "🌙" : "☀️"}</span>
+
+        <button onClick={toggleTheme} className={styles.themeButton}>
+          {isDark ? "Light" : "Dark"}
         </button>
       </div>
 
@@ -27,7 +26,6 @@ export default function Header() {
 
       {/* 🔹 AZIONI */}
       <div className={styles.actions}>
-        
         {/* NOTIFICHE */}
         <div className={styles.bellButton}>
           <NotificationBell userId={"1"} />
@@ -45,9 +43,7 @@ export default function Header() {
             <span className={styles.greeting}>Accedi</span>
           )}
         </div>
-
       </div>
     </header>
   );
 }
-
