@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useEffect, useMemo, useReducer, useRef } from 'react';
 import type { Movement } from '../../../../types/models';
 
 type Props = {
@@ -58,37 +58,75 @@ export default function TransactionList({ movements }: Props) {
 
   // dispatch è STABILE (garantito da React) — non serve useCallback per passarlo ai figli
 
-  const filteredMovements = movements
-    .filter((m) => {
-      if (filters.type === 'credit') return m.amount > 0;
-      if (filters.type === 'debit') return m.amount < 0;
-      return true;
-    })
-    .filter((m) => {
-      if (filters.minAmount !== null && Math.abs(m.amount) < filters.minAmount) return false;
-      if (filters.maxAmount !== null && Math.abs(m.amount) > filters.maxAmount) return false;
-      return true;
-    })
-    .filter((m) => m.description.toLowerCase().includes(filters.searchText.toLowerCase()))
-    .sort((a, b) => {
-      if (filters.sortBy === 'date') {
-        const diff = new Date(a.date).getTime() - new Date(b.date).getTime();
-        return filters.sortOrder === 'asc' ? diff : -diff;
-      }
+  const filteredMovements = useMemo(() => {
+    movements
+      .filter((m) => {
+        if (filters.type === 'credit') return m.amount > 0;
+        if (filters.type === 'debit') return m.amount < 0;
+        return true;
+      })
+      .filter((m) => {
+        if (filters.minAmount !== null && Math.abs(m.amount) < filters.minAmount) return false;
+        if (filters.maxAmount !== null && Math.abs(m.amount) > filters.maxAmount) return false;
+        return true;
+      })
+      .filter((m) => m.description.toLowerCase().includes(filters.searchText.toLowerCase()))
+      .sort((a, b) => {
+        if (filters.sortBy === 'date') {
+          const diff = new Date(a.date).getTime() - new Date(b.date).getTime();
+          return filters.sortOrder === 'asc' ? diff : -diff;
+        }
 
-      const diff = a.amount - b.amount;
-      return filters.sortOrder === 'asc' ? diff : -diff;
-    });
+        const diff = a.amount - b.amount;
+        return filters.sortOrder === 'asc' ? diff : -diff;
+      });
+  }, [movements, filters]);
+
+  const totals = useMemo(() => {
+    let totalIncome = 0;
+    let totalExpense = 0;
+    let count = movements.length;
+
+    for (const m of movements) {
+      if (m.amount > 0) {
+        totalIncome += m.amount;
+      } else {
+        totalExpense += m.amount;
+      }
+    }
+
+    return {
+      totalIncome,
+      totalExpense,
+      count,
+    };
+  }, [filteredMovements]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+    inputRef.current?.select();
+  }, []);
 
   return (
-  <>
-    <FilterPanel filters={filters} dispatch={dispatch} />
+    <>
+      <FilterPanel filters={filters} dispatch={dispatch} />
 
-    <div>
-      {filteredMovements.map(m => (
-        <div key={m.id}>{m.description}</div>
-      ))}
-    </div>
-  </>
-);
+      <div>
+        <input type="text" ref={inputRef} />
+      </div>
+      <div>
+        {filteredMovements.map((m) => (
+          <div key={m.id}>{m.description}</div>
+        ))}
+
+        <div>
+          <p>Entrate: {totals.totalIncome}</p>
+          <p>Uscite: {totals.totalExpense}</p>
+          <p>Movimenti: {totals.count}</p>
+        </div>
+      </div>
+    </>
+  );
 }
